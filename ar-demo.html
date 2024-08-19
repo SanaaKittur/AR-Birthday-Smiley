@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AR Demo</title>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <a-scene embedded arjs>
+        <a-marker preset="hiro">
+            <!-- Smiley Face -->
+            <a-entity position="0 0 0">
+                <!-- Smiley Animation -->
+                <a-animation attribute="position" dur="1000" to="0 0.6 0" direction="alternate" repeat="indefinite"></a-animation>
+                
+                <!-- Face -->
+                <a-sphere position="0 0.5 0" radius="0.4" color="#FFD700"></a-sphere>
+                
+                <!-- Eyes -->
+                <a-sphere position="-0.15 0.6 0.35" radius="0.05" color="#000"></a-sphere>
+                <a-sphere position="0.15 0.6 0.35" radius="0.05" color="#000"></a-sphere>
+                
+                <!-- Filled Semicircle Smile -->
+                <a-entity position="0 0.4 0.35">
+                    <a-cylinder radius="0.17" height="0.01" color="#000" rotation="0 0 0" open-ended="true" position="0 -0.01 0"></a-cylinder>
+                </a-entity>
+
+                <!-- Waving Hand -->
+                <a-entity position="0.5 0.5 0">
+                    <!-- Hand -->
+                    <a-sphere position="0 0 0" radius="0.1" color="#FFD700"></a-sphere>
+
+                    <!-- Fingers -->
+                    <a-entity position="0 0.1 0">
+                        <a-sphere position="0 0.1 0" radius="0.03" color="#FFD700"></a-sphere>
+                        <a-sphere position="0.05 0.1 0" radius="0.03" color="#FFD700"></a-sphere>
+                        <a-sphere position="-0.05 0.1 0" radius="0.03" color="#FFD700"></a-sphere>
+                    </a-entity>
+                    <a-entity position="0 0.2 0">
+                        <a-sphere position="0 0.1 0" radius="0.03" color="#FFD700"></a-sphere>
+                    </a-entity>
+
+                    <!-- Animated Hand -->
+                    <a-animation attribute="rotation" to="0 0 45" direction="alternate" dur="300" repeat="indefinite"></a-animation>
+                    <a-animation attribute="position" to="0.5 0.55 0" direction="alternate" dur="300" repeat="indefinite"></a-animation>
+                </a-entity>
+
+                <!-- Second Waving Hand -->
+                <a-entity position="-0.5 0.5 0">
+                    <!-- Hand -->
+                    <a-sphere position="0 0 0" radius="0.1" color="#FFD700"></a-sphere>
+
+                    <!-- Fingers -->
+                    <a-entity position="0 0.1 0">
+                        <a-sphere position="0 0.1 0" radius="0.03" color="#FFD700"></a-sphere>
+                        <a-sphere position="0.05 0.1 0" radius="0.03" color="#FFD700"></a-sphere>
+                        <a-sphere position="-0.05 0.1 0" radius="0.03" color="#FFD700"></a-sphere>
+                    </a-entity>
+                    <a-entity position="0 0.2 0">
+                        <a-sphere position="0 0.1 0" radius="0.03" color="#FFD700"></a-sphere>
+                    </a-entity>
+
+                    <!-- Animated Hand -->
+                    <a-animation attribute="rotation" to="0 0 -45" direction="alternate" dur="300" repeat="indefinite"></a-animation>
+                    <a-animation attribute="position" to="-0.5 0.55 0" direction="alternate" dur="300" repeat="indefinite"></a-animation>
+                </a-entity>
+
+                <!-- Cloud with Text -->
+                <a-entity position="0 1.7 0">
+                    <!-- Cloud -->
+                    <a-entity position="0 0 0">
+                        <a-sphere radius="0.6" color="#FFF" position="0 0 0"></a-sphere>
+                        <a-sphere radius="0.5" color="#FFF" position="0.5 0 0"></a-sphere>
+                        <a-sphere radius="0.5" color="#FFF" position="-0.5 0 0"></a-sphere>
+                        <a-sphere radius="0.4" color="#FFF" position="0 0.5 0"></a-sphere>
+                    </a-entity>
+                    <a-text value="Hi there!! Happy Birthday ❤️" color="#800000" position="0 0.1 0.7" align="center" width="4"></a-text>
+                </a-entity>
+            </a-entity>
+        </a-marker>
+        <a-entity camera></a-entity>
+    </a-scene>
+</body>
+</html>

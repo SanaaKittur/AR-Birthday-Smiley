@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday !!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: url('balloons2.gif') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 50px;
+            color: black;
+            text-align: center;
+            margin-top: -100px;
+            font-weight: bold;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.5);
+            animation: jump 1s infinite ease-in-out, sparkle 1.5s infinite;
+        }
+
+        @keyframes jump {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        .cta-button {
+            position: absolute;
+            background-color: rgb(30, 30, 91);
+            color: white;
+            margin-top: -25px;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            border: 3px solid white;
+            box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.8);
+            transition: left 0.2s, top 0.2s;
+        }
+
+        .profile-pic {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            margin-top: -10px;
+            object-fit: cover;
+            box-shadow: 0 0 10px 2px #fff;
+        }
+
+        .play-button {
+            position: absolute;
+            bottom: 10px; /* Adjust position from bottom */
+            right: 10px; /* Adjust position from right */
+            background: black;
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid #fff;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <audio id="background-music" src="Romantic-Birthday.mp3" preload="auto"></audio>
+    <div class="container">
+        <h1>Happy Birthday !! 🥰</h1>
+        <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
+        <a href="#" id="surprise-btn" class="cta-button">SURPRISE! <br/>    Try to click 😜😁</a>
+        <div id="play-btn" class="play-button">From Sanaa</div>
+    </div>
+    <script>
+        let hoverCount = 0;
+        const maxHovers = 20;
+        const button = document.getElementById('surprise-btn');
+        const audio = document.getElementById('background-music');
+        const playButton = document.getElementById('play-btn');
+
+        function getRandomPosition() {
+            const x = Math.random() * (window.innerWidth - button.offsetWidth);
+            const y = Math.random() * (window.innerHeight - button.offsetHeight - 100); // Leave space for the button
+            return { x, y };
+        }
+
+        button.addEventListener('mouseover', () => {
+            if (hoverCount < maxHovers) {
+                hoverCount++;
+                const { x, y } = getRandomPosition();
+                button.style.left = `${x}px`;
+                button.style.top = `${y}px`;
+            } else {
+                window.location.href = 'ar-demo.html';
+            }
+        });
+
+        button.style.left = `50%`;
+        button.style.top = `calc(100% - 100px)`;
+        button.style.transform = `translate(-50%, -50%)`; 
+
+        playButton.addEventListener('click', () => {
+            audio.play().catch(error => {
+                console.log('Autoplay was prevented:', error);
+            });
+        });
+    </script>
+</body>
+</html>
